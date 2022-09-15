@@ -6,3 +6,9 @@
   grid-template-columns: minmax(min-content, max-content) minmax(min-content, max-content);
   gap: 16px 18px;
 }
+
+@media screen and (max-width: 644px) {
+  .profile__info {
+    gap: 14px 10px;
+  }
+}

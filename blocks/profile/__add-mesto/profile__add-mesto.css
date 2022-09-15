@@ -16,3 +16,9 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+@media screen and (max-width: 644px) {
+  .profile__add-mesto {
+    width: 282px;
+  }
+}

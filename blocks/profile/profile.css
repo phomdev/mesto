@@ -5,3 +5,16 @@
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 929px) {
+  .profile {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 644px) {
+  .profile {
+    max-width: 282px;
+    flex-direction: column;
+  }
+}

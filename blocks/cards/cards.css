@@ -6,3 +6,18 @@
   grid-template-columns: repeat(auto-fit, 282px);
   gap: 20px 17px;
 }
+
+@media screen and (max-width: 929px) {
+  .cards {
+    max-width: 600px;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 644px) {
+  .cards {
+    max-width: 282px;
+    gap: 20px 19px;
+    margin: 0 auto 48px auto;
+  }
+}

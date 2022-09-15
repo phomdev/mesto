@@ -5,3 +5,19 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+@media screen and (max-width: 929px) {
+  .profile__description {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 644px) {
+  .profile__description {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    margin-bottom: 36px;
+  }
+}
