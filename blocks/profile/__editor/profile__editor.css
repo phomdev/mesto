@@ -1,0 +1,17 @@
+.profile__editor {
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #000;
+  border: 1px solid #FFF;
+  background-image: url('../../../images/edit.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.profile__editor:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

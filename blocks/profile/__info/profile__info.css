@@ -1,0 +1,8 @@
+.profile__info {
+  margin: 0 0 0 30px;
+  padding: 0;
+  display: grid;
+  align-items: baseline;
+  grid-template-columns: minmax(min-content, max-content) minmax(min-content, max-content);
+  gap: 16px 18px;
+}

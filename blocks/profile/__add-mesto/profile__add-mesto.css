@@ -1,0 +1,18 @@
+.profile__add-mesto {
+  margin: 0 0 0 auto;
+  padding: 0;
+  width: 150px;
+  height: 50px;
+  background-color: #000;
+  border: 2px solid #FFF;
+  border-radius: 2px;
+  background-image: url('../../../images/add.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.profile__add-mesto:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

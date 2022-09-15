@@ -1,0 +1,10 @@
+.body {
+  background-color: #000;
+  color: #FFF;
+  /* Подключение основного шрифта и начертания */
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
