@@ -5,6 +5,7 @@
   align-items: baseline;
   grid-template-columns: minmax(min-content, max-content) minmax(min-content, max-content);
   gap: 16px 18px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 644px) {

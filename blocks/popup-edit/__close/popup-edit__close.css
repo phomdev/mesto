@@ -1,0 +1,25 @@
+.popup-edit__close {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: 0;
+  background: url('../../../images/close.svg') no-repeat;
+  transition: all 0.4s ease-in-out;
+}
+
+.popup-edit__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 644px) {
+  .popup-edit__close {
+    width: 20px;
+    height: 20px;
+    background: url('../../../images/close_small.svg') no-repeat;
+    right: 0;
+    top: -36px;
+  }
+}

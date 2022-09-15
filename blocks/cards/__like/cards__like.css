@@ -15,3 +15,7 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+.cards__like:active {
+  background-image: url('../../../images/like_active.svg');
+}

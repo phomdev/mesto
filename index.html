@@ -29,51 +29,71 @@
         <div class="cards__item">
           <img src="./images/cards/1.jpg" class="cards__image" alt="">
           <div class="cards__info">
-            <h2 class="cars__description">Карачаевск</h2>
+            <h2 class="cards__description">Карачаевск</h2>
             <button type="button" class="cards__like"></button>
           </div>
         </div>
         <div class="cards__item">
           <img src="./images/cards/2.jpg" class="cards__image" alt="">
           <div class="cards__info">
-            <h2 class="cars__description">Гора Эльбрус</h2>
+            <h2 class="cards__description">Гора Эльбрус</h2>
             <button type="button" class="cards__like"></button>
           </div>
         </div>
         <div class="cards__item">
           <img src="./images/cards/3.jpg" class="cards__image" alt="">
           <div class="cards__info">
-            <h2 class="cars__description">Домбай</h2>
+            <h2 class="cards__description">Домбай</h2>
             <button type="button" class="cards__like"></button>
           </div>
         </div>
         <div class="cards__item">
           <img src="./images/cards/4.jpg" class="cards__image" alt="">
           <div class="cards__info">
-            <h2 class="cars__description">Гора Эльбрус</h2>
+            <h2 class="cards__description">Гора Эльбрус</h2>
             <button type="button" class="cards__like"></button>
           </div>
         </div>
         <div class="cards__item">
           <img src="./images/cards/5.jpg" class="cards__image" alt="">
           <div class="cards__info">
-            <h2 class="cars__description">Домбай</h2>
+            <h2 class="cards__description">Домбай</h2>
             <button type="button" class="cards__like"></button>
           </div>
         </div>
         <div class="cards__item">
           <img src="./images/cards/6.jpg" class="cards__image" alt="">
           <div class="cards__info">
-            <h2 class="cars__description">Карачаево-Черкесия</h2>
+            <h2 class="cards__description">Карачаево-Черкесия</h2>
             <button type="button" class="cards__like"></button>
           </div>
         </div>
       </section>
     </main>
+    <!-- Начало popup редактирования профиля -->
+    <section class="popup-edit">
+      <div class="popup-edit__container">
+        <button type="button" class="popup-edit__close"></button>
+        <div class="popup-edit__content">
+          <h2 class="popup-edit__name">Редактировать профиль</h2>
+          <form class="popup-edit__form">
+            <label>
+              <input type="text" value="Жак-Ив Кусто" class="popup-edit__input popup-edit__input_name">
+            </label>
+            <label>
+              <input type="text" value="Исследователь океана" class="popup-edit__input popup-edit__input_description">
+            </label>
+            <button type="submit" class="popup-edit__submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </section>
     <!-- Начало подвала -->
     <footer class="footer">
       <div class="footer__description">© 2022 Mesto Russia</div>
     </footer>
   </div>
 </body>
+<!--Подключение скриптов-->
+<script src="./scripts/index.js"></script>
 </html>

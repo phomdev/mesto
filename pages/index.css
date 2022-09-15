@@ -19,8 +19,20 @@
 @import url(../blocks/cards/__item/cards__item.css);
 @import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__info/cards__info.css);
-@import url(../blocks/cards/__description/cars__description.css);
+@import url(../blocks/cards/__description/cards__description.css);
 @import url(../blocks/cards/__like/cards__like.css);
 /* Стили подвала */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__description/footer__description.css);
+/* Стили popup */
+@import url(../blocks/popup-edit/popup-edit.css);
+@import url(../blocks/popup-edit/_opened/popup-edit_opened.css);
+@import url(../blocks/popup-edit/__container/popup-edit__container.css);
+@import url(../blocks/popup-edit/__close/popup-edit__close.css);
+@import url(../blocks/popup-edit/__content/popup-edit__content.css);
+@import url(../blocks/popup-edit/__name/popup-edit__name.css);
+@import url(../blocks/popup-edit/__form/popup-edit__form.css);
+@import url(../blocks/popup-edit/__input/popup-edit__input.css);
+@import url(../blocks/popup-edit/__input/_name/popup-edit__input_name.css);
+@import url(../blocks/popup-edit/__input/_description/popup-edit__input_description.css);
+@import url(../blocks/popup-edit/__submit/popup-edit__submit.css);
