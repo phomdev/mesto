@@ -1,12 +1,12 @@
 .profile__add-mesto {
   margin: 0 0 0 auto;
   padding: 0;
-  width: 150px;
-  height: 50px;
+  background-image: url('../../../images/icon/add.svg');
+  min-width: 150px;
+  min-height: 50px;
   background-color: #000;
   border: 2px solid #FFF;
   border-radius: 2px;
-  background-image: url('../../../images/add.png');
   background-repeat: no-repeat;
   background-position: center;
   transition: all 0.4s ease-in-out;
@@ -19,6 +19,6 @@
 
 @media screen and (max-width: 644px) {
   .profile__add-mesto {
-    width: 282px;
+    min-width: 282px;
   }
 }

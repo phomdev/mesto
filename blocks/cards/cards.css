@@ -1,8 +1,9 @@
 .cards {
-  max-width: 880px;
   margin: 0 auto 66px auto;
   padding: 0;
+  max-width: 880px;
   display: grid;
+  /* Перенос карточек по расширению экрана */
   grid-template-columns: repeat(auto-fit, 282px);
   gap: 20px 17px;
   box-sizing: border-box;
@@ -17,8 +18,8 @@
 
 @media screen and (max-width: 644px) {
   .cards {
+    margin: 0 auto 48px auto;
     max-width: 282px;
     gap: 20px 19px;
-    margin: 0 auto 48px auto;
   }
 }

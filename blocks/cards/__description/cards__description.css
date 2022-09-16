@@ -5,6 +5,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  /* Общие стили текста */
   color: #000;
   font-weight: 900;
   font-size: 24px;

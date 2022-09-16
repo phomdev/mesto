@@ -1,13 +1,13 @@
 .profile__editor {
   margin: 0;
   padding: 0;
-  width: 24px;
-  height: 24px;
-  background-color: #000;
+  background-image: url('../../../images/icon/edit.svg');
+  min-width: 24px;
+  min-height: 24px;
   border: 1px solid #FFF;
-  background-image: url('../../../images/edit.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #000;
   transition: all 0.4s ease-in-out;
 }
 

@@ -1,21 +1,22 @@
 .cards__like {
   margin: 0;
   padding: 0;
-  background-image: url('../../../images/like.svg');
+  background-image: url('../../../images/icon/like.svg');
+  min-width: 22px;
+  min-height: 19px;
   background-repeat: no-repeat;
   border: none;
   background-color: #FFF;
-  min-width: 22px;
-  min-height: 19px;
   background-position: center;
   transition: all 0.4s ease-in-out;
 }
 
 .cards__like:hover {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: pointer;
 }
 
+/* Изображение активного лайка */
 .cards__like:active {
-  background-image: url('../../../images/like_active.svg');
+  background-image: url('../../../images/icon/like_active.svg');
 }
