@@ -1,13 +1,10 @@
 .profile__editor {
   margin: 0;
   padding: 0;
-  background-image: url('../../../images/icon/edit.svg');
   min-width: 24px;
   min-height: 24px;
   border: 1px solid #FFF;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #000;
+  background: transparent url('../../../images/icon/edit.svg') no-repeat center;
   transition: all 0.4s ease-in-out;
 }
 
@@ -18,7 +15,8 @@
 
 @media screen and (max-width: 644px) {
   .profile__editor {
-    width: 18px;
-    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    background-size: 7.5px;
   }
 }

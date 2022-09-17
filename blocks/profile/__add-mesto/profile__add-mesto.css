@@ -1,15 +1,12 @@
 .profile__add-mesto {
   margin: 0 0 0 auto;
   padding: 0;
-  background-image: url('../../../images/icon/add.svg');
   min-width: 150px;
   min-height: 50px;
-  background-color: #000;
   border: 2px solid #FFF;
   border-radius: 2px;
-  background-repeat: no-repeat;
-  background-position: center;
   transition: all 0.4s ease-in-out;
+  background: transparent url('../../../images/icon/add.svg') no-repeat center;
 }
 
 .profile__add-mesto:hover {
@@ -20,5 +17,6 @@
 @media screen and (max-width: 644px) {
   .profile__add-mesto {
     min-width: 282px;
+    background-size: 16px;
   }
 }

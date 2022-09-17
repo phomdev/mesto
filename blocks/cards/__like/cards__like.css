@@ -1,13 +1,10 @@
 .cards__like {
   margin: 0;
   padding: 0;
-  background-image: url('../../../images/icon/like.svg');
   min-width: 22px;
   min-height: 19px;
-  background-repeat: no-repeat;
   border: none;
-  background-color: #FFF;
-  background-position: center;
+  background: transparent url('../../../images/icon/like.svg') no-repeat center;
   transition: all 0.4s ease-in-out;
 }
 

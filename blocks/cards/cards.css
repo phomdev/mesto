@@ -12,7 +12,7 @@
 @media screen and (max-width: 929px) {
   .cards {
     max-width: 600px;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -20,6 +20,5 @@
   .cards {
     margin: 0 auto 48px auto;
     max-width: 282px;
-    gap: 20px 19px;
   }
 }

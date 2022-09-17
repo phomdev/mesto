@@ -18,7 +18,7 @@
   .popup-edit__close {
     width: 20px;
     height: 20px;
-    background: url('../../../images/icon/close_small.svg') no-repeat;
+    background-size: 20px;
     right: 0;
     top: -36px;
   }

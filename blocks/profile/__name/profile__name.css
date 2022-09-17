@@ -1,6 +1,11 @@
 .profile__name {
   margin: 0;
   padding: 0;
+  /* Сокращаем текст */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 294px;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
@@ -8,6 +13,7 @@
 
 @media screen and (max-width: 929px) {
   .profile__name {
+    max-width: 205px;
     font-size: 29px;
     line-height: 36px;
   }
@@ -15,6 +21,7 @@
 
 @media screen and (max-width: 644px) {
   .profile__name {
+    max-width: 189px;
     text-align: center;
     font-size: 27px;
     line-height: 33px;

@@ -11,6 +11,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  text-align: center;
   transition: all 0.4s ease-in-out;
 }
 
@@ -22,5 +23,7 @@
 @media screen and (max-width: 644px) {
   .popup-edit__submit {
     width: 238px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
