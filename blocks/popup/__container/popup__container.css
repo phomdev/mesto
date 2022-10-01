@@ -1,4 +1,4 @@
-.popup-edit__container {
+.popup__container {
   margin: 0;
   padding: 34px 36px 37px 36px;
   position: relative;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 644px) {
-  .popup-edit__container {
+  .popup__container {
     padding: 25px 22px 25px 22px;
     max-width: 282px;
   }

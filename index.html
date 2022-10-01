@@ -26,48 +26,6 @@
       </section>
       <!-- Начало секции карточек -->
       <section class="cards">
-        <div class="cards__item">
-          <img src="./images/cards/1.jpg" class="cards__image" alt="Изображение замка в Карачаевске">
-          <div class="cards__info">
-            <h2 class="cards__description">Карачаевск</h2>
-            <button type="button" class="cards__like" aria-label="Like"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img src="./images/cards/2.jpg" class="cards__image" alt="Изображение горы Эльбрус">
-          <div class="cards__info">
-            <h2 class="cards__description">Гора Эльбрус</h2>
-            <button type="button" class="cards__like" aria-label="Like"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img src="./images/cards/3.jpg" class="cards__image" alt="Изображение гор Домбая">
-          <div class="cards__info">
-            <h2 class="cards__description">Домбай</h2>
-            <button type="button" class="cards__like" aria-label="Like"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img src="./images/cards/4.jpg" class="cards__image" alt="Изображение горы Эльбрус">
-          <div class="cards__info">
-            <h2 class="cards__description">Гора Эльбрус</h2>
-            <button type="button" class="cards__like" aria-label="Like"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img src="./images/cards/5.jpg" class="cards__image" alt="Изображение гор Домбая">
-          <div class="cards__info">
-            <h2 class="cards__description">Домбай</h2>
-            <button type="button" class="cards__like" aria-label="Like"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img src="./images/cards/6.jpg" class="cards__image" alt="Изображение замка в Карачаево-Черкесии">
-          <div class="cards__info">
-            <h2 class="cards__description">Карачаево-Черкесия</h2>
-            <button type="button" class="cards__like" aria-label="Like"></button>
-          </div>
-        </div>
       </section>
     </main>
     <!-- Начало подвала -->
@@ -76,21 +34,56 @@
     </footer>
   </div>
   <!-- Начало popup редактирования профиля -->
-  <div class="popup-edit">
-    <div class="popup-edit__container">
-      <button type="button" class="popup-edit__close" aria-label="Закрыть форму"></button>
-      <h3 class="popup-edit__name">Редактировать профиль</h3>
-      <form class="popup-edit__form" name="profile">
+  <div id="profile-popup" class="popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close" aria-label="Закрыть форму"></button>
+      <h3 class="popup__name">Редактировать профиль</h3>
+      <form class="popup__form" name="profile">
         <label>
-          <input type="text" value="Жак-Ив Кусто" class="popup-edit__input popup-edit__input_item_name" name="username" required placeholder="Ваше имя">
+          <input type="text" value="Жак-Ив Кусто" class="popup__input popup__input_item_name" name="username" required placeholder="Ваше имя">
         </label>
         <label>
-          <input type="text" value="Исследователь океана" class="popup-edit__input popup-edit__input_item_description" name="description" required placeholder="Ваш род занятий">
+          <input type="text" value="Исследователь океана" class="popup__input popup__input_item_description" name="description" required placeholder="Ваш род занятий">
         </label>
-        <button type="submit" class="popup-edit__submit" aria-label="Сохранить">Сохранить</button>
+        <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
   </div>
+  <!-- Начало popup добавления карточки -->
+  <div id="cards-popup" class="popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close" aria-label="Закрыть форму"></button>
+      <h3 class="popup__name">Новое место</h3>
+      <form class="popup__form" name="mesto">
+        <label>
+          <input type="text" class="popup__input popup__input_item_name" name="mesto-name" required placeholder="Название">
+        </label>
+        <label>
+          <input type="text" class="popup__input popup__input_item_description" name="link-image" required placeholder="Ссылка на картинку">
+        </label>
+        <button type="submit" class="popup__submit" aria-label="Создать">Создать</button>
+      </form>
+    </div>
+  </div>
+  <!-- Увеличение изображения по клике -->
+  <div id="image-popup" class="popup popup_zoom_active">
+    <div class="popup__zoom-container">
+      <button type="button" class="popup__close" aria-label="Закрыть"></button>
+      <img src="#" class="popup__image" alt="Изображение места">
+      <p class="popup__description"></p>
+    </div>
+  </div>
+  <!-- Шаблон карточек -->
+  <template id="card-template">
+    <div class="cards__item">
+      <button type="button" class="cards__delete" aria-label="Удалить"></button>
+      <img src="#" class="cards__image" alt="Изображение места">
+      <div class="cards__info">
+        <h2 class="cards__description"></h2>
+        <button type="button" class="cards__like" aria-label="Like"></button>
+      </div>
+    </div>
+  </template>
   <!--Подключение скриптов-->
   <script src="./scripts/index.js"></script>
 </body>

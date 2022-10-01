@@ -1,0 +1,17 @@
+.cards__delete {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  /* Отступ по макету слева 244, свехну 20 */
+  transform: translate(244px, 20px);
+  min-width: 18px;
+  min-height: 19px;
+  border: none;
+  background: transparent url('../../../images/icon/trash.svg') no-repeat;
+  transition: all 0.4s ease-in-out;
+}
+
+.cards__delete:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

@@ -17,21 +17,27 @@
 /* Стили карточек */
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/cards/__item/cards__item.css);
+@import url(../blocks/cards/__delete/cards__delete.css);
 @import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__info/cards__info.css);
 @import url(../blocks/cards/__description/cards__description.css);
 @import url(../blocks/cards/__like/cards__like.css);
+@import url(../blocks/cards/__like/_active/cards__like_active.css);
 /* Стили подвала */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__description/footer__description.css);
 /* Стили popup */
-@import url(../blocks/popup-edit/popup-edit.css);
-@import url(../blocks/popup-edit/_opened/popup-edit_opened.css);
-@import url(../blocks/popup-edit/__container/popup-edit__container.css);
-@import url(../blocks/popup-edit/__close/popup-edit__close.css);
-@import url(../blocks/popup-edit/__name/popup-edit__name.css);
-@import url(../blocks/popup-edit/__form/popup-edit__form.css);
-@import url(../blocks/popup-edit/__input/popup-edit__input.css);
-@import url(../blocks/popup-edit/__input/_item/popup-edit__input_item_name.css);
-@import url(../blocks/popup-edit/__input/_item/popup-edit__input_item_description.css);
-@import url(../blocks/popup-edit/__submit/popup-edit__submit.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_zoom/popup_zoom_active.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/zoom-container/popup__zoom-container.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__description/popup__description.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_item/popup__input_item_name.css);
+@import url(../blocks/popup/__input/_item/popup__input_item_description.css);
+@import url(../blocks/popup/__submit/popup__submit.css);

@@ -1,7 +1,10 @@
-.popup-edit {
+.popup {
   width: 100%;
   height: 100%;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .6s, opacity .6s ease;
   justify-content: center;
   align-items: center;
   position: fixed;
