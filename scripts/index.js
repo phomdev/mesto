@@ -17,21 +17,24 @@ const profileName = document.querySelector('.profile__name');
 // Получаем описание профиля
 const profileDescription = document.querySelector('.profile__description');
 // Получаем input имени
-const nameInput = popupProfile.querySelector('.popup__input_item_name');
+const nameInput = popupProfile.querySelector('#username-input');
 // Получаем input названия карточки
-const nameCardInput = popupCards.querySelector('.popup__input_item_name');
+const nameCardInput = popupCards.querySelector('#place-name-input');
 // Получаем input описания
-const descriptionInput = popupProfile.querySelector('.popup__input_item_description');
+const descriptionInput = popupProfile.querySelector('#description-input');
 // Получаем input ссылки на изображение карточки
-const linkCardInput = popupCards.querySelector('.popup__input_item_description');
+const linkCardInput = popupCards.querySelector('#place-image-input');
 // Получаем секцию хранения карточек
 const cardsArea = document.querySelector('.cards');
 // находим все крестики проекта по универсальному селектору
 const closeButtons = document.querySelectorAll('.popup__close');
+// находим все popup элементы
+const popupElements = document.querySelectorAll('.popup');
 
 // Общая функция открытия popup
 const openPopup = function (popupName) {
   popupName.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupThroughEsc)
 }
 // Функция открытия popup профиля
 const openPopupProfile = function () {
@@ -42,6 +45,14 @@ const openPopupProfile = function () {
 // Функция закрытия popup
 const closePopup = function (popupName) {
   popupName.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupThroughEsc);
+}
+// Функция закрытия popup по нажатию на ESC
+const closePopupThroughEsc = function (evt) {
+  if (evt.keyCode === 27) {
+    const popupOpened = document.querySelector('.popup_opened')
+    closePopup(popupOpened);
+  }
 }
 // Функция добавления карточки
 const addCards = function (name, link) {
@@ -105,6 +116,14 @@ addCardIcon.addEventListener('click', () => openPopup(popupCards));
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
+});
+// Обработчик закрытия popup нажатием за область формы
+popupElements.forEach((popupElement) => {
+  popupElement.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popupElement);
+    }
+  });
 });
 // Обновляем данные формы при нажатии кнопки сохранения
 popupProfile.addEventListener('submit', handleProfileFormSubmit);
