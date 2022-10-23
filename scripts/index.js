@@ -1,11 +1,15 @@
 // Получаем элемент иконки редактирования профиля
-const editProfileIcon = document.querySelector('.profile__editor');
+const profileEditingIcon = document.querySelector('.profile__editor');
 // Получаем элемент иконки добавления места
-const addCardIcon = document.querySelector('.profile__add-mesto');
+const iconAddCard = document.querySelector('.profile__add-mesto');
 // Получаем popup редактирования профиля
 const popupProfile = document.querySelector('#profile-popup');
+// Получаем форму редактирования профиля
+const formProfile = popupProfile.querySelector('.popup__form');
 // Получаем popup добавления карточки
 const popupCards = document.querySelector('#cards-popup');
+// Получаем форму добавления карточки
+const formCards = popupCards.querySelector('.popup__form');
 // Получаем popup увеличения картинки
 const popupImageZoom = document.querySelector('#image-popup');
 // Получаем описание zoom картинки
@@ -26,10 +30,14 @@ const descriptionInput = popupProfile.querySelector('#description-input');
 const linkCardInput = popupCards.querySelector('#place-image-input');
 // Получаем секцию хранения карточек
 const cardsArea = document.querySelector('.cards');
-// находим все крестики проекта по универсальному селектору
-const closeButtons = document.querySelectorAll('.popup__close');
-// находим все popup элементы
+// Находим все крестики проекта по универсальному селектору
+const iconCloseButtons = document.querySelectorAll('.popup__close');
+// Находим все popup элементы
 const popupElements = document.querySelectorAll('.popup');
+// Получаем доступ к контенту карточек
+const contentCardTemplate = document.querySelector('#card-template').content;
+// Получаем submit кнопку формы карточки
+const popupSubmit = popupCards.querySelector('.popup__submit');
 
 // Общая функция открытия popup
 const openPopup = function (popupName) {
@@ -49,28 +57,27 @@ const closePopup = function (popupName) {
 }
 // Функция закрытия popup по нажатию на ESC
 const closePopupThroughEsc = function (evt) {
-  if (evt.keyCode === 27) {
+  if (evt.key === "Escape") {
     const popupOpened = document.querySelector('.popup_opened')
     closePopup(popupOpened);
   }
 }
 // Функция добавления карточки
 const addCards = function (name, link) {
-  const contentCardTemplate = document.querySelector('#card-template').content;
-  const copyCardTemplate = contentCardTemplate.querySelector('.cards__item').cloneNode(true);
-  const cardsImage = copyCardTemplate.querySelector('.cards__image');
-  const cardDescription = copyCardTemplate.querySelector('.cards__description');
+  const templateCardCopy = contentCardTemplate.querySelector('.cards__item').cloneNode(true);
+  const cardsImage = templateCardCopy.querySelector('.cards__image');
+  const cardDescription = templateCardCopy.querySelector('.cards__description');
 
   cardDescription.textContent = name;
   cardsImage.src = link;
   cardsImage.alt = name;
 
   // Добавляем возможность лайкать карточку
-  copyCardTemplate.querySelector('.cards__like').addEventListener('click', function (evt) {
+  templateCardCopy.querySelector('.cards__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('cards__like_active');
   });
   // Добавляем возможность удалять карточку по клику
-  copyCardTemplate.querySelector('.cards__delete').addEventListener('click', function (evt) {
+  templateCardCopy.querySelector('.cards__delete').addEventListener('click', function (evt) {
     evt.target.closest('.cards__item').remove();
   });
   // Добавляем возможность увеличения картинки при клике
@@ -83,7 +90,7 @@ const addCards = function (name, link) {
 
   cardsImage.addEventListener('click', getZoomImages);
 
-  return copyCardTemplate;
+  return templateCardCopy;
 }
 // Функция сохранения карточек
 const addNewCard = function (evt) {
@@ -91,6 +98,8 @@ const addNewCard = function (evt) {
   cardsArea.prepend(addCards(nameCardInput.value, linkCardInput.value));
   evt.target.reset()
   closePopup(popupCards);
+  // Делаем кнопку неактивной при повторном открытии
+  toggleButtonState(formCards, popupSubmit, classListForm);
 }
 // Функция наполнения страницы начальными карточками
 const renderInitialCards = function () {
@@ -109,23 +118,23 @@ const handleProfileFormSubmit = function (evt) {
 }
 
 // Открываем popup редактирования профиля и передаём сохранённые данные
-editProfileIcon.addEventListener('click', openPopupProfile);
+profileEditingIcon.addEventListener('click', openPopupProfile);
 // Открываем popup добавления карточки
-addCardIcon.addEventListener('click', () => openPopup(popupCards));
+iconAddCard.addEventListener('click', () => openPopup(popupCards));
 // Обработчик закрытия popup на крестик
-closeButtons.forEach((button) => {
+iconCloseButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 // Обработчик закрытия popup нажатием за область формы
-popupElements.forEach((popupElement) => {
+popupElements.forEach( popupElement => {
   popupElement.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
       closePopup(popupElement);
     }
   });
 });
 // Обновляем данные формы при нажатии кнопки сохранения
-popupProfile.addEventListener('submit', handleProfileFormSubmit);
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 // Обновляем данные формы при нажатии кнопки добавления карточки
-popupCards.addEventListener('submit', addNewCard);
+formCards.addEventListener('submit', addNewCard);
