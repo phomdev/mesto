@@ -1,3 +1,8 @@
+// Импортируем список с карточками и селекторами валидации, класс для валидации, класс для создания экземпляров карточки
+import { objectListCard, classListForm } from './objectList.js';
+import { FormValidator } from './FormValidator.js';
+import { Card } from "./Card.js";
+
 // Получаем элемент иконки редактирования профиля
 const profileEditingIcon = document.querySelector('.profile__editor');
 // Получаем элемент иконки добавления места
@@ -11,11 +16,11 @@ const popupCards = document.querySelector('#cards-popup');
 // Получаем форму добавления карточки
 const formCards = popupCards.querySelector('.popup__form');
 // Получаем popup увеличения картинки
-const popupImageZoom = document.querySelector('#image-popup');
+export const popupImageZoom = document.querySelector('#image-popup');
 // Получаем описание zoom картинки
-const popupImageZoomDescription = popupImageZoom.querySelector('.popup__description');
+export const popupImageZoomDescription = popupImageZoom.querySelector('.popup__description');
 // Получаем ссылку zoom картинки
-const popupImageZoomImage = popupImageZoom.querySelector('.popup__image');
+export const popupImageZoomImage = popupImageZoom.querySelector('.popup__image');
 // Получаем имя профиля
 const profileName = document.querySelector('.profile__name');
 // Получаем описание профиля
@@ -34,13 +39,9 @@ const cardsArea = document.querySelector('.cards');
 const iconCloseButtons = document.querySelectorAll('.popup__close');
 // Находим все popup элементы
 const popupElements = document.querySelectorAll('.popup');
-// Получаем доступ к контенту карточек
-const contentCardTemplate = document.querySelector('#card-template').content;
-// Получаем submit кнопку формы карточки
-const popupSubmit = popupCards.querySelector('.popup__submit');
 
 // Общая функция открытия popup
-const openPopup = function (popupName) {
+export const openPopup = function (popupName) {
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupThroughEsc)
 }
@@ -62,53 +63,37 @@ const closePopupThroughEsc = function (evt) {
     closePopup(popupOpened);
   }
 }
-// Функция добавления карточки
-const addCards = function (name, link) {
-  const templateCardCopy = contentCardTemplate.querySelector('.cards__item').cloneNode(true);
-  const cardsImage = templateCardCopy.querySelector('.cards__image');
-  const cardDescription = templateCardCopy.querySelector('.cards__description');
-
-  cardDescription.textContent = name;
-  cardsImage.src = link;
-  cardsImage.alt = name;
-
-  // Добавляем возможность лайкать карточку
-  templateCardCopy.querySelector('.cards__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__like_active');
-  });
-  // Добавляем возможность удалять карточку по клику
-  templateCardCopy.querySelector('.cards__delete').addEventListener('click', function (evt) {
-    evt.target.closest('.cards__item').remove();
-  });
-  // Добавляем возможность увеличения картинки при клике
-  const getZoomImages = function () {
-    popupImageZoomDescription.textContent = name;
-    popupImageZoomImage.src = link;
-    popupImageZoomImage.alt = name;
-    openPopup(popupImageZoom);
-  }
-
-  cardsImage.addEventListener('click', getZoomImages);
-
-  return templateCardCopy;
-}
 // Функция сохранения карточек
 const addNewCard = function (evt) {
   evt.preventDefault();
-  cardsArea.prepend(addCards(nameCardInput.value, linkCardInput.value));
+  // Добавляем экземпляр класса, в качестве объекта используется безымянный объект
+  // имя: данные из формы,
+  // ссылка: данные из формы
+  cardsArea.prepend(new Card({
+    name: nameCardInput.value,
+    link: linkCardInput.value},
+    '#card-template').makeCard());
   evt.target.reset()
   closePopup(popupCards);
-  // Делаем кнопку неактивной при повторном открытии
-  toggleButtonState(formCards, popupSubmit, classListForm);
+  // Включаем валидацию экземпляра класса карточки
+  new FormValidator(classListForm, formCards).enableValidationCheck();
 }
 // Функция наполнения страницы начальными карточками
 const renderInitialCards = function () {
-  initialCards.forEach(function (card) {
-    cardsArea.append(addCards(card.name, card.link));
+  objectListCard.forEach(function (card) {
+    cardsArea.append(new Card(card, '#card-template').makeCard());
   });
+}
+// Функция валидации элементов
+const renderValidationCards = function () {
+  document.querySelectorAll(classListForm.formSelector).forEach(formElement => {
+    new FormValidator(classListForm, formElement).enableValidationCheck();
+  })
 }
 // Вызываем функцию для добавления начальных карточек при загрузке страницы
 renderInitialCards();
+// Вызываем функцию валидации
+renderValidationCards();
 // Функция сохранения введённых в форму данных (имени и описания)
 const handleProfileFormSubmit = function (evt) {
   evt.preventDefault();
