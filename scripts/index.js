@@ -39,6 +39,7 @@ const cardsArea = document.querySelector('.cards');
 const iconCloseButtons = document.querySelectorAll('.popup__close');
 // Находим все popup элементы
 const popupElements = document.querySelectorAll('.popup');
+const popupSubmitButton = popupCards.querySelector('.popup__submit');
 
 // Общая функция открытия popup
 export const openPopup = function (popupName) {
@@ -63,37 +64,34 @@ const closePopupThroughEsc = function (evt) {
     closePopup(popupOpened);
   }
 }
+// Функция рендера карточек
+const renderCard = function (object, template) {
+  const card = new Card(object, template);
+  return card.makeCard();
+}
 // Функция сохранения карточек
 const addNewCard = function (evt) {
   evt.preventDefault();
   // Добавляем экземпляр класса, в качестве объекта используется безымянный объект
   // имя: данные из формы,
   // ссылка: данные из формы
-  cardsArea.prepend(new Card({
+  cardsArea.prepend(renderCard({
     name: nameCardInput.value,
-    link: linkCardInput.value},
-    '#card-template').makeCard());
-  evt.target.reset()
+    link: linkCardInput.value
+  }, '#card-template'));
+  evt.target.reset();
   closePopup(popupCards);
-  // Включаем валидацию экземпляра класса карточки
-  new FormValidator(classListForm, formCards).enableValidationCheck();
+  popupSubmitButton.setAttribute('disabled', 'true');
+  popupSubmitButton.classList.add(classListForm.inactiveButtonClass)
 }
 // Функция наполнения страницы начальными карточками
 const renderInitialCards = function () {
   objectListCard.forEach(function (card) {
-    cardsArea.append(new Card(card, '#card-template').makeCard());
+    cardsArea.append(renderCard(card, '#card-template'));
   });
-}
-// Функция валидации элементов
-const renderValidationCards = function () {
-  document.querySelectorAll(classListForm.formSelector).forEach(formElement => {
-    new FormValidator(classListForm, formElement).enableValidationCheck();
-  })
 }
 // Вызываем функцию для добавления начальных карточек при загрузке страницы
 renderInitialCards();
-// Вызываем функцию валидации
-renderValidationCards();
 // Функция сохранения введённых в форму данных (имени и описания)
 const handleProfileFormSubmit = function (evt) {
   evt.preventDefault();
@@ -102,6 +100,11 @@ const handleProfileFormSubmit = function (evt) {
   closePopup(popupProfile);
 }
 
+// Запускаем валидацию на форму добавления карточки и редактирования профиля
+const addCardValidate = new FormValidator(classListForm, popupCards);
+addCardValidate.enableValidationCheck();
+const editProfileValidate = new FormValidator(classListForm, formProfile);
+editProfileValidate.enableValidationCheck();
 // Открываем popup редактирования профиля и передаём сохранённые данные
 profileEditingIcon.addEventListener('click', openPopupProfile);
 // Открываем popup добавления карточки

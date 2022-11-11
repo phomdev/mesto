@@ -7,14 +7,19 @@ class Card {
     this._name = object.name;
     this._image = object.link;
     this._template = templateElem;
+    this._elementCard = document.querySelector(this._template).content.querySelector('.cards__item').cloneNode(true);
+    this._elementImages = this._elementCard.querySelector('.cards__image');
+    this._elementName = this._elementCard.querySelector('.cards__description');
+    this._likeIcon = this._elementCard.querySelector('.cards__like');
+    this._deleteIcon = this._elementCard.querySelector('.cards__delete');
   }
   // Метод лайка карточки
   _addLikeCard = (event) => {
     event.target.classList.toggle('cards__like_active');
   }
   // Метод удаления карточки
-  _deleteCard = (event) => {
-    event.target.closest('.cards__item').remove();
+  _deleteCard() {
+    this._elementCard.remove();
   }
   // Метод увеличения изображения карточки
   _getZoomImages() {
@@ -25,21 +30,19 @@ class Card {
   }
   // Метод создания карточки
   makeCard() {
-    // Клонируем темплейт для карточки
-    const elementCard = document.querySelector(this._template).content.querySelector('.cards__item').cloneNode(true);
-    elementCard.querySelector('.cards__description').textContent = this._name;
-    elementCard.querySelector('.cards__image').src = this._image;
-    elementCard.querySelector('.cards__image').alt = this._name;
+    this._elementName.textContent = this._name;
+    this._elementImages.src = this._image;
+    this._elementImages.alt = this._name;
     // Навешиваем обработчики на экземпляр класса
-    this._addEventHandler(elementCard);
+    this._addEventHandler();
     // Возвращаем готовый экземпляр
-    return elementCard;
+    return this._elementCard;
   }
   // Подготавливаем обработчики для экземпляра
-  _addEventHandler = (elementCard) => {
-    elementCard.querySelector('.cards__like').addEventListener('click', event => this._addLikeCard(event))
-    elementCard.querySelector('.cards__delete').addEventListener('click', event => this._deleteCard(event));
-    elementCard.querySelector('.cards__image').addEventListener('click', () => this._getZoomImages())
+  _addEventHandler = () => {
+    this._likeIcon.addEventListener('click', event => this._addLikeCard(event))
+    this._deleteIcon.addEventListener('click', event => this._deleteCard(event));
+    this._elementImages.addEventListener('click', () => this._getZoomImages())
   }
 }
 // Экспортируем класс в index.js
