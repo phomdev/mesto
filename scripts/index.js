@@ -35,11 +35,8 @@ const descriptionInput = popupProfile.querySelector('#description-input');
 const linkCardInput = popupCards.querySelector('#place-image-input');
 // Получаем секцию хранения карточек
 const cardsArea = document.querySelector('.cards');
-// Находим все крестики проекта по универсальному селектору
-const iconCloseButtons = document.querySelectorAll('.popup__close');
 // Находим все popup элементы
 const popupElements = document.querySelectorAll('.popup');
-const popupSubmitButton = popupCards.querySelector('.popup__submit');
 
 // Общая функция открытия popup
 export const openPopup = function (popupName) {
@@ -81,8 +78,7 @@ const addNewCard = function (evt) {
   }, '#card-template'));
   evt.target.reset();
   closePopup(popupCards);
-  popupSubmitButton.setAttribute('disabled', 'true');
-  popupSubmitButton.classList.add(classListForm.inactiveButtonClass)
+  addCardValidate.disableSubmitButton();
 }
 // Функция наполнения страницы начальными карточками
 const renderInitialCards = function () {
@@ -109,11 +105,6 @@ editProfileValidate.enableValidationCheck();
 profileEditingIcon.addEventListener('click', openPopupProfile);
 // Открываем popup добавления карточки
 iconAddCard.addEventListener('click', () => openPopup(popupCards));
-// Обработчик закрытия popup на крестик
-iconCloseButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-});
 // Обработчик закрытия popup нажатием за область формы
 popupElements.forEach( popupElement => {
   popupElement.addEventListener('mousedown', (evt) => {

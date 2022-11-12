@@ -1,28 +1,28 @@
 class FormValidator {
     // Первый - объект с классами для валидации, второй - объект для валидации
-  constructor(objectList, elementValidation) {
-    this._objectList = objectList;
-    this._elementValidation = elementValidation;
+  constructor(validationSettings, formElement) {
+    this._validationSettings = validationSettings;
+    this._formElement = formElement;
     // Submit кнопка в форме
-    this._submitButton = this._elementValidation.querySelector(this._objectList.submitButtonSelector)
-    this._inputList = Array.from(this._elementValidation.querySelectorAll(this._objectList.inputSelector));
+    this._submitButton = this._formElement.querySelector(this._validationSettings.submitButtonSelector)
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._validationSettings.inputSelector));
   }
 
   // Метод показа ошибок валидации
   _showValidationError(inputItem, errorMessage) {
-    const errorItem = this._elementValidation.querySelector(`.${inputItem.id}-error`)
-    inputItem.classList.add(this._objectList.inputErrorClass);
+    const errorItem = this._formElement.querySelector(`.${inputItem.id}-error`)
+    inputItem.classList.add(this._validationSettings.inputErrorClass);
     // Передаём текст ошибки
     errorItem.textContent = errorMessage;
     // Показываем текст ошибок (через visibility)
-    errorItem.classList.add(this._objectList.errorClass);
+    errorItem.classList.add(this._validationSettings.errorClass);
   }
   // Метод скрытия ошибок валидации
   _hideValidationError(inputItem) {
-    const errorItem = this._elementValidation.querySelector(`.${inputItem.id}-error`)
-    inputItem.classList.remove(this._objectList.inputErrorClass);
+    const errorItem = this._formElement.querySelector(`.${inputItem.id}-error`)
+    inputItem.classList.remove(this._validationSettings.inputErrorClass);
     // Скрываем текст ошибок (через visibility)
-    errorItem.classList.remove(this._objectList.errorClass);
+    errorItem.classList.remove(this._validationSettings.errorClass);
     // Очищаем ошибки
     errorItem.textContent = '';
   }
@@ -58,16 +58,25 @@ class FormValidator {
   enableValidationCheck() {
     this._setEventListeners();
   }
+
+  disableSubmitButton() {
+    this._submitButton.setAttribute('disabled', 'true');
+    this._submitButton.classList.add(this._validationSettings.inactiveButtonClass);
+  }
+
+  _enableSubmitButton() {
+    this._submitButton.classList.remove(this._validationSettings.inactiveButtonClass);
+    this._submitButton.removeAttribute('disabled');
+  }
+
   // Метод активации submit кнопки после валидации
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
       // Отключаем кнопку при ошибке валидации
-      this._submitButton.setAttribute('disabled', 'true');
-      this._submitButton.classList.add(this._objectList.inactiveButtonClass);
+      this.disableSubmitButton();
     } else {
-      // Включаем кнопку при ошибке валидации
-      this._submitButton.classList.remove(this._objectList.inactiveButtonClass);
-      this._submitButton.removeAttribute('disabled');
+      // Включаем кнопку
+      this._enableSubmitButton();
     }
   }
 }
