@@ -1,12 +1,10 @@
-// Импорт переменных из файла index.js для работы медота увеличения изображения в карточке
-import { openPopup, popupImageZoom as popupZoom, popupImageZoomDescription as popupDescription, popupImageZoomImage as popupImage } from './index.js';
-
 class Card {
   // Первый - объект с названием и изображением карточки, второй - template шаблон карточки
-  constructor(object, templateElem) {
+  constructor(object, templateElem, handleCardClick) {
     this._name = object.name;
     this._image = object.link;
     this._template = templateElem;
+    this._handleCardClick = handleCardClick;
     this._elementCard = document.querySelector(this._template).content.querySelector('.cards__item').cloneNode(true);
     this._elementImages = this._elementCard.querySelector('.cards__image');
     this._elementName = this._elementCard.querySelector('.cards__description');
@@ -20,13 +18,6 @@ class Card {
   // Метод удаления карточки
   _deleteCard() {
     this._elementCard.remove();
-  }
-  // Метод увеличения изображения карточки
-  _getZoomImages() {
-    popupDescription.textContent = this._name;
-    popupImage.src = this._image;
-    popupImage.alt = this._name;
-    openPopup(popupZoom);
   }
   // Метод создания карточки
   makeCard() {
@@ -42,7 +33,7 @@ class Card {
   _addEventHandler = () => {
     this._likeIcon.addEventListener('click', event => this._addLikeCard(event))
     this._deleteIcon.addEventListener('click', event => this._deleteCard(event));
-    this._elementImages.addEventListener('click', () => this._getZoomImages())
+    this._elementImages.addEventListener('click', () => this._handleCardClick(this._name, this._image));
   }
 }
 // Экспортируем класс в index.js
