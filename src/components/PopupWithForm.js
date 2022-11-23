@@ -7,16 +7,16 @@ class PopupWithForm extends Popup {
     this._callbackFormSubmit = callbackFormSubmit;
     // this._popupItem находится в родительском классе
     this._popupFormItem = this._popupItem.querySelector('.popup__form');
+    this._inputList = Array.from(this._popupFormItem.querySelectorAll('.popup__input'));
   }
   // Метод собирает данные всех полей формы
   _getInputValues() {
-    this._inputList = Array.from(this._popupFormItem.querySelectorAll('.popup__input'));
     // Наполняем пустой массив данными через forEach
-    this._formValues = {};
+    const formValues = {};
     this._inputList.forEach(inputItem => {
-      this._formValues[inputItem.name] = inputItem.value;
+      formValues[inputItem.name] = inputItem.value;
     });
-    return this._formValues;
+    return formValues;
   }
   // Связываем с методом getInputValues, добавляем обработчик клика и обработчик сабмита формы
   setEventListeners() {

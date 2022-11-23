@@ -28,7 +28,7 @@ class FormValidator {
   }
   // Метод проверки валидации форм
   _checkInputValidity(inputItem) {
-    if (inputItem.validity.valid === false) {
+    if (!inputItem.validity.valid) {
       // Показываем ошибки
       this._showValidationError(inputItem, inputItem.validationMessage);
     } else {

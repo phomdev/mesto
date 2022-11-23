@@ -1,21 +1,20 @@
 class Popup {
   // Принимает в конструктор селектор popup
   constructor(popupSelector) {
-    this._popupSelector = popupSelector;
-    this._popupItem = document.querySelector(this._popupSelector);
+    this._popupItem = document.querySelector(popupSelector);
   }
   // Метод открытия popup
   open() {
     this._popupItem.classList.add('popup_opened');
-    document.addEventListener('keydown', this._handleEscClose.bind(this))
+    document.addEventListener('keydown', this._handleEscClose)
   }
   // Метод закрытия popup
   close() {
     this._popupItem.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._handleEscClose.bind(this));
+    document.removeEventListener('keydown', this._handleEscClose);
   }
   // Метод для закрытия popup по нажатию на клавишу Escape
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close();
     }
