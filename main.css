@@ -5,7 +5,9 @@
 .header{border-bottom:1px solid rgba(84,84,84,.7);box-sizing:border-box;margin:45px auto 40px;max-width:880px;padding:0}@media screen and (max-width:929px){.header{max-width:600px}}@media screen and (max-width:644px){.header{margin:28px auto 42px;min-width:100%}}
 .header__logo{margin:0 auto 41px;max-width:142px}@media screen and (max-width:644px){.header__logo{margin:0 auto 31px 27px;max-width:103px}}
 .profile{align-items:center;box-sizing:border-box;display:flex;margin:0 auto 50px;max-width:880px;padding:0}@media screen and (max-width:929px){.profile{max-width:600px}}@media screen and (max-width:644px){.profile{flex-direction:column;max-width:282px}}
-.profile__avatar{border-radius:50%;max-height:120px;max-width:120px}@media screen and (max-width:644px){.profile__avatar{margin:0 0 26px}}
+.profile__avatar-area{display:flex;margin:0;padding:0;position:relative}
+.profile__avatar{border-radius:50%;height:120px;width:120px}@media screen and (max-width:644px){.profile__avatar{margin:0 0 26px}}
+.profile__avatar-edit{background:none;border:none;border-radius:50%;height:120px;margin:0;padding:0;position:absolute;width:120px}.profile__avatar-edit:hover{background:rgba(0,0,0,.9) url(images/edit_avatar.a086f758840ae814ecde.svg) no-repeat 50%;cursor:pointer;opacity:.8}
 .profile__info{align-items:center;box-sizing:border-box;display:grid;gap:16px 18px;grid-template-columns:minmax(min-content,max-content) minmax(min-content,max-content);margin:0 0 0 30px;padding:0}@media screen and (max-width:644px){.profile__info{display:flex;flex-wrap:wrap;gap:14px 10px;justify-content:center;margin:0 auto}}
 .profile__name{font-size:42px;font-weight:500;line-height:48px;margin:0;max-width:294px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:929px){.profile__name{font-size:29px;line-height:36px;max-width:205px}}@media screen and (max-width:644px){.profile__name{font-size:27px;line-height:33px;max-width:189px;text-align:center}}
 .profile__editor{background:transparent url(images/edit.8667ac4a523e8fc42e59.svg) no-repeat 50%;border:1px solid #fff;margin:0;min-height:24px;min-width:24px;padding:0;transition:all .4s ease-in-out}.profile__editor:hover{cursor:pointer;opacity:.6}@media screen and (max-width:644px){.profile__editor{background-size:7.5px;min-height:18px;min-width:18px}}
@@ -15,19 +17,21 @@
 .cards__item{max-width:282px;transition:all .5s ease-in-out}.cards__item:hover{opacity:.8}
 .cards__delete{background:transparent url(images/trash.cbc09a894bdd4c956365.svg) no-repeat;border:none;margin:0;min-height:19px;min-width:18px;padding:0;position:absolute;transform:translate(244px,20px);transition:all .4s ease-in-out}.cards__delete:hover{cursor:pointer;opacity:.6}
 .cards__image{border-radius:10px 10px 0 0;display:block;height:282px;-o-object-fit:cover;object-fit:cover;width:100%}.cards__image:hover{cursor:pointer}
-.cards__info{align-items:center;background-color:#fff;border-radius:0 0 10px 10px;display:flex;justify-content:space-between;margin:0;padding:25px 20px}
+.cards__info{align-items:center;background-color:#fff;border-radius:0 0 10px 10px;display:flex;height:35px;justify-content:space-between;margin:0;padding:25px 20px}
 .cards__description{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
-.cards__like{background:transparent url(images/like.87ed371465c7a6a1cd01.svg) no-repeat 50%;border:none;margin:0 0 0 5px;min-height:19px;min-width:22px;padding:0;transition:all .4s ease-in-out}.cards__like:hover{cursor:pointer;opacity:.5}
+.cards__like-area{align-items:center;display:flex;flex-direction:column;margin:0;padding:0}
+.cards__like{background:transparent url(images/like.87ed371465c7a6a1cd01.svg) no-repeat 50%;border:none;margin:0 0 5px;min-height:19px;min-width:22px;padding:0;transition:all .4s ease-in-out}.cards__like:hover{cursor:pointer;opacity:.5}
+.cards__like-counter{color:#000;font-size:13px;font-weight:400;line-height:16px;margin:0;padding:0}
 .cards__like_active{background:transparent url(images/like_active.fe17a515669479b1e649.svg) no-repeat 50%}
 .footer{margin:0 auto 60px;max-width:880px}@media screen and (max-width:929px){.footer{max-width:600px}}@media screen and (max-width:644px){.footer{margin:0 auto 36px;max-width:282px}}
 .footer__description{color:#545454;font-size:18px;font-weight:400;line-height:22px;margin:0;padding:0}@media screen and (max-width:644px){.footer__description{font-size:14px;line-height:17px}}
 .popup{align-items:center;background:rgba(0,0,0,.5);display:flex;height:100%;justify-content:center;left:0;opacity:0;position:fixed;top:0;transition:visibility .6s,opacity .6s ease;visibility:hidden;width:100%}
 .popup_zoom_active{background:rgba(0,0,0,.9)}
 .popup_opened{opacity:1;transition:visibility .6s,opacity .6s ease;visibility:visible}
-.popup__container{background:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);box-sizing:border-box;margin:0;max-width:430px;min-height:330px;padding:34px 36px 37px;position:relative;width:100%}@media screen and (max-width:644px){.popup__container{max-width:282px;padding:25px 22px}}
+.popup__container{background:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);box-sizing:border-box;margin:0;max-width:430px;min-height:200px;padding:34px 36px 37px;position:relative;width:100%}@media screen and (max-width:644px){.popup__container{max-width:282px;padding:25px 22px}}
 .popup__zoom-container{box-sizing:border-box;margin:0;max-height:75vh;max-width:75vw;padding:0;position:relative}
 .popup__close{background:url(images/close.2ceb783afbab75916ddc.svg) no-repeat;border:0;height:32px;position:absolute;right:-40px;top:-40px;transition:all .4s ease-in-out;width:32px}.popup__close:hover{cursor:pointer;opacity:.6}@media screen and (max-width:644px){.popup__close{background-size:20px;height:20px;right:0;top:-36px;width:20px}}
-.popup__name{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0 0 54px;max-width:330px;padding:0}@media screen and (max-width:644px){.popup__name{font-size:18px;line-height:22px;margin:0 0 75px;max-width:238px}}
+.popup__name{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0 0 35px;max-width:330px;padding:0}@media screen and (max-width:644px){.popup__name{font-size:18px;line-height:22px;margin:0 0 75px;max-width:238px}}
 .popup__description{font-size:12px;font-style:normal;font-weight:400;line-height:15px;margin:10px 0 0;padding:0}
 .popup__image{margin:0;max-height:75vh;max-width:75vw;padding:0}
 .popup__form{display:flex;flex-direction:column;font-size:14px;font-weight:400;line-height:17px}
