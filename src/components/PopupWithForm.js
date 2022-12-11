@@ -34,5 +34,5 @@ class PopupWithForm extends Popup {
     this._popupFormItem.reset();
   }
 }
-
+// Экспортируем класс в index.js
 export { PopupWithForm };

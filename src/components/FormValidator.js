@@ -7,7 +7,6 @@ class FormValidator {
     this._submitButton = this._formElement.querySelector(this._validationSettings.submitButtonSelector)
     this._inputList = Array.from(this._formElement.querySelectorAll(this._validationSettings.inputSelector));
   }
-
   // Метод показа ошибок валидации
   _showValidationError(inputItem, errorMessage) {
     const errorItem = this._formElement.querySelector(`.${inputItem.id}-error`)
@@ -25,6 +24,11 @@ class FormValidator {
     errorItem.classList.remove(this._validationSettings.errorClass);
     // Очищаем ошибки
     errorItem.textContent = '';
+  }
+  // Метод сброса валидации форм
+  resetValidate() {
+    this._inputList.forEach((inputItem) => { this._hideValidationError(inputItem); })
+    this._toggleButtonState();
   }
   // Метод проверки валидации форм
   _checkInputValidity(inputItem) {
@@ -58,28 +62,26 @@ class FormValidator {
   enableValidationCheck() {
     this._setEventListeners();
   }
-
-  disableSubmitButton() {
+  // Отключаем submit кнопку в popup
+  _disableSubmitButton() {
     this._submitButton.setAttribute('disabled', 'true');
     this._submitButton.classList.add(this._validationSettings.inactiveButtonClass);
   }
-
+  // Включаем submit кнопку в popup
   _enableSubmitButton() {
     this._submitButton.classList.remove(this._validationSettings.inactiveButtonClass);
     this._submitButton.removeAttribute('disabled');
   }
-
   // Метод активации submit кнопки после валидации
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
       // Отключаем кнопку при ошибке валидации
-      this.disableSubmitButton();
+      this._disableSubmitButton();
     } else {
       // Включаем кнопку
       this._enableSubmitButton();
     }
   }
 }
-
 // Экспортируем класс валидации в файл index.js
 export { FormValidator };

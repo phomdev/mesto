@@ -3,6 +3,7 @@ class UserInfo {
   constructor({ usernameSelector, userDescriptionSelector }) {
     this._username = document.querySelector(usernameSelector);
     this._userDescription = document.querySelector(userDescriptionSelector);
+    this._avatarLink = document.querySelector('.profile__avatar');
   }
   // Метод возвращает объект с данными пользователя
   getUserInfo() {
@@ -16,6 +17,10 @@ class UserInfo {
     this._username.textContent = username;
     this._userDescription.textContent = description;
   }
+  // Метод изменения аватара пользователя, обновляет ссылку через src
+  setUserAvatar(avatarLink) {
+    this._avatarLink.src = avatarLink;
+  }
 }
-
+// Экспортируем класс в index.js
 export { UserInfo };

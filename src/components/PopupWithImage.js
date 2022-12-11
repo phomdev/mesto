@@ -16,5 +16,5 @@ class PopupWithImage extends Popup {
     super.open();
   }
 }
-
+// Экспортируем класс в index.js
 export { PopupWithImage };

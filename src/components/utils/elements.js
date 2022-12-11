@@ -14,10 +14,17 @@ const formCards = popupCards.querySelector('.popup__form');
 const nameInput = popupProfile.querySelector('#username-input');
 // Получаем input описания
 const descriptionInput = popupProfile.querySelector('#description-input');
-
+// Получаем popup редактирования аватара
+const popupAvatarEdit = document.querySelector('#avatar-popup');
+// Получаем форму редактирования аватара
+const popupAvatarEditForm = popupAvatarEdit.querySelector('.popup__form');
+// Получаем иконку редактирования аватара
+const iconAvatarEdit = document.querySelector('.profile__avatar-edit');
+// Экспортируем переменные в index.js
 export {
   profileEditingIcon, iconAddCard,
   popupProfile, popupCards,
   formProfile, nameInput,
-  descriptionInput, formCards
+  descriptionInput, formCards,
+  popupAvatarEditForm, iconAvatarEdit
 };

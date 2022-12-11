@@ -1,0 +1,6 @@
+.profile__avatar-area {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: relative;
+}

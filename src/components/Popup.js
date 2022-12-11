@@ -2,6 +2,7 @@ class Popup {
   // Принимает в конструктор селектор popup
   constructor(popupSelector) {
     this._popupItem = document.querySelector(popupSelector);
+    this._sendButton = this._popupItem.querySelector('.popup__submit');
   }
   // Метод открытия popup
   open() {
@@ -19,6 +20,14 @@ class Popup {
       this.close();
     }
   }
+  // Метод добавления кнопке текста в момент сохранения
+  putSavingProcessText() {
+    this._sendButton.textContent = 'Сохранение...'
+  }
+  // Метод добавления стандартного текста кнопке
+  returnSavingProcessText() {
+    this._sendButton.textContent = 'Сохранить'
+  }
   // Метод закрытия popup по клику за область формы (включая крестик)
   setEventListeners() {
     this._popupItem.addEventListener('mousedown', (evt) => {
@@ -28,5 +37,5 @@ class Popup {
     });
   }
 }
-
+// Экспортируем класс в index.js
 export { Popup };
