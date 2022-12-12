@@ -22,8 +22,9 @@ class Card {
     return document.querySelector(this._cardTemplate).content.querySelector('.cards__item').cloneNode(true);
   }
   // Метод удаления карточки
-  _deleteCard() {
+  deleteCard() {
     this._cardElement.remove();
+    this._cardElement = null;
   }
   // Общий метод реализации и отображения лайков и их количества
   renderCardLike(card) {
@@ -45,6 +46,7 @@ class Card {
     // Возврат без переменной, так как объявление переменной будет избыточной (Local variable is redundant)
     return this._likeArea.find((userLike) => userLike._id === this._userId);
   }
+
   // Метод обработки добавления и снятия лайков
   _interactLike() {
     if (this._likedCard()) {
@@ -76,7 +78,7 @@ class Card {
     this._likeIcon.addEventListener('click', () => this._interactLike())
     this._elementImages.addEventListener('click', () => this._cardZoom(this._cardName, this._cardImage));
     if (this._userId === this._authorId) {
-      this._deleteIcon.addEventListener('click', () =>  this._cardDelete(this._cardElement, this._cardId, this._deleteCard));
+      this._deleteIcon.addEventListener('click', () =>  this._cardDelete(this, this._cardId));
     } else {
       this._deleteIcon.remove();
     }

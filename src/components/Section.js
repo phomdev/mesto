@@ -1,8 +1,8 @@
 class Section {
   // Первым параметром конструктор принимает объект renderer, второй параметр — селектор контейнера
-  constructor({ renderer }, templateSelector) {
+  constructor({ renderer }, selector) {
     this._renderer = renderer;
-    this._templateContainer = document.querySelector(templateSelector);
+    this._container = document.querySelector(selector);
   }
   // Метод отрисовки всех элементов
   renderItems(res) {
@@ -10,7 +10,7 @@ class Section {
   }
   // Метод принимает DOM-элемент и добавляет его в контейнер
   addItem(cardElement) {
-    this._templateContainer.prepend(cardElement);
+    this._container.prepend(cardElement);
   }
 }
 // Экспортируем класс в index.js

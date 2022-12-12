@@ -1,9 +1,9 @@
 class UserInfo {
   // Принимает объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе
-  constructor({ usernameSelector, userDescriptionSelector }) {
+  constructor({ usernameSelector, userDescriptionSelector, userAvatarSelector }) {
     this._username = document.querySelector(usernameSelector);
     this._userDescription = document.querySelector(userDescriptionSelector);
-    this._avatarLink = document.querySelector('.profile__avatar');
+    this._avatarLink = document.querySelector(userAvatarSelector);
   }
   // Метод возвращает объект с данными пользователя
   getUserInfo() {

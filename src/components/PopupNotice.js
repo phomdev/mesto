@@ -1,7 +1,7 @@
 import { Popup } from "./Popup.js";
 
-class popupNotice extends Popup {
-  // Получает селектор и
+class PopupNotice extends Popup {
+  // Получает селектор, объект и карточку.
   constructor(popupSelector, { callbackNotice }) {
     super(popupSelector);
     // this._popupItem находится в родительском классе
@@ -16,9 +16,9 @@ class popupNotice extends Popup {
   }
   // Навешиваем обработчики на кнопку подтверждения, наследуем из родителя остальные
   setEventListeners() {
-    this._submitButton.addEventListener('submit', (evt) => { evt.preventDefault(); this._callbackNotice(this._cardObject, this._cardId); })
+    this._submitButton.addEventListener('submit', (evt) => { evt.preventDefault(); this._callbackNotice(this._cardObject, this._cardId) })
     super.setEventListeners();
   }
 }
 // Экспортируем класс в index.js
-export { popupNotice };
+export { PopupNotice };

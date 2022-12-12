@@ -8,6 +8,8 @@ class PopupWithForm extends Popup {
     // this._popupItem находится в родительском классе
     this._popupFormItem = this._popupItem.querySelector('.popup__form');
     this._inputList = Array.from(this._popupFormItem.querySelectorAll('.popup__input'));
+    this._sendButton = this._popupItem.querySelector('.popup__submit');
+    this._sendButtonText = this._sendButton.textContent;
   }
   // Метод собирает данные всех полей формы
   _getInputValues() {
@@ -26,6 +28,14 @@ class PopupWithForm extends Popup {
       evt.preventDefault();
       this._callbackFormSubmit(this._getInputValues());
     });
+  }
+  // Метод добавления кнопке текста в момент сохранения
+  putSavingProcessText() {
+    this._sendButton.textContent = 'Сохранение...';
+  }
+  // Метод добавления стандартного текста кнопке
+  returnSavingProcessText() {
+    this._sendButton.textContent = this._sendButtonText;
   }
   // Метод закрытия popup (перезаписывает родителя)
   close() {
